@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from "../../public/logo.png";
 function Sidebar() {
   const menuItems = [
     { name: "Home", icon: "home" },
@@ -10,9 +10,7 @@ function Sidebar() {
     <div className="bg-white shadow-sm h-screen flex-shrink-0 overflow-y-auto w-16">
       <div className="p-3">
         <div className="flex items-center justify-center mb-8">
-          <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-            <div className="w-3 h-3 bg-white rounded-full"></div>
-          </div>
+          <img src={logo} alt="logo" className="w-10 h-10" />
         </div>
 
         <div className="space-y-1">

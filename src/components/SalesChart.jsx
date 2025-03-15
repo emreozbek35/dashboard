@@ -136,7 +136,7 @@ const SalesChart = () => {
             </div>
 
             {/* Period selector - hidden on mobile, visible on md screens and up */}
-            <div className="hidden md:flex bg-gray-100 p-1 rounded-xl">
+            <div className="hidden md:flex bg-gray-100 p-2 rounded-xl">
               {["Daily", "Weekly", "Monthly"].map((period) => (
                 <button
                   key={period}
