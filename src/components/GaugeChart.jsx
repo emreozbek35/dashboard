@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 const GaugeChart = ({ value = 65 }) => {
-  const COLORS = ["#F87171", "#FCA5A5", "#FACC15", "#4ADE80"];
+  const COLORS = ["#ff718b", "#FCA5A5", "#FACC15", "#04ce00"];
   const data = [
     { value: 30 }, // Red
     { value: 15 }, // Light Red

@@ -15,8 +15,8 @@ const StatCard = ({
       <h2 className="text-lg font-bold">{title}</h2>
       <p className="text-3xl font-bold">{value}</p>
       <p
-        className={`text-sm ${
-          percentage > 0 ? "text-green-500" : "text-red-500"
+        className={`text-sm font-semibold ${
+          percentage > 0 ? "text-[#04ce00]" : "text-[#ff718b]"
         }`}
       >
         {percentage > 0 ? `+${percentage}%` : `${percentage}%`}

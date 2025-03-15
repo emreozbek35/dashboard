@@ -21,7 +21,7 @@ const Dashboard = () => {
           value="$325"
           percentage={18.34}
           data={profitData}
-          color="#22c55e"
+          color="#04ce00"
           className="flex-1 min-w-[250px]"
         />
         <StatCard
@@ -29,7 +29,7 @@ const Dashboard = () => {
           value="5"
           percentage={-7.69}
           data={malfunctionData}
-          color="#ef4444"
+          color="#ff718b"
           className="flex-1 min-w-[250px]"
         />
       </div>

@@ -40,22 +40,29 @@ const TotalSalesByGasType = () => {
         </div>
         <div className="w-full sm:w-1/2 mt-4 sm:mt-0 sm:ml-4">
           {data.map((item, index) => (
-            <div key={index} className="flex items-center gap-2 mb-2">
-              <span
-                className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: item.color }}
-              ></span>
-              <span className="flex-1">{item.name}</span>
-              <span className="font-bold">{item.value}%</span>
-              <span
+            <div
+              key={index}
+              className="grid grid-cols-4 gap-2 mb-2 items-center"
+            >
+              <div className="flex items-center gap-2 col-span-2">
+                <span
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: item.color }}
+                ></span>
+                <span className="font-medium">{item.name}</span>
+              </div>
+              <div className="text-right font-normal text-[#8b88a4]">
+                {item.value}%
+              </div>
+              <div
                 className={
                   item.change.startsWith("+")
-                    ? "text-green-500"
-                    : "text-red-500"
+                    ? "text-[#04ce00] font-semibold text-right"
+                    : "text-[#ff718b] font-semibold text-right"
                 }
               >
                 {item.change}
-              </span>
+              </div>
             </div>
           ))}
         </div>
