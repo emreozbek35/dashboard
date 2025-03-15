@@ -11,7 +11,7 @@ const StatCard = ({
 }) => {
   return (
     <div className={`bg-white p-4 rounded-2xl shadow-md ${className}`}>
-      <p className="text-gray-400 text-sm">Statistics</p>
+      <p className="text-[#9291a5] text-sm">Statistics</p>
       <h2 className="text-lg font-bold">{title}</h2>
       <p className="text-3xl font-bold">{value}</p>
       <p

@@ -17,7 +17,7 @@ const GaugeChart = ({ value = 65 }) => {
     <div className="bg-white p-6 rounded-2xl shadow-md flex-1 min-w-[280px]">
       <div className="flex justify-between items-center mb-4">
         <div>
-          <p className="text-gray-400 text-sm">Tanks</p>
+          <p className="text-[#9291a5] text-sm">Tanks</p>
           <h2 className="text-xl font-bold">Tank #1</h2>
         </div>
       </div>

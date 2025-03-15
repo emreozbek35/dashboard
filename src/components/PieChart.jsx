@@ -11,7 +11,7 @@ const data = [
 const TotalSalesByGasType = () => {
   return (
     <div className="p-4 shadow-md rounded-lg flex-1 bg-white min-w-[280px]">
-      <h2 className="text-gray-500 text-sm">Statistics</h2>
+      <h2 className="text-[#9291a5] text-sm">Statistics</h2>
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-bold">Total Sales by Gas Type</h3>
         <select className="text-sm border rounded px-2 py-1 bg-gray-100">
