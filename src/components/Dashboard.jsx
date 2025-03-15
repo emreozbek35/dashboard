@@ -31,8 +31,10 @@ const Dashboard = () => {
         />
       </div>
       <SalesChart />
-      <GaugeChart />
-      <TotalSalesByGasType />
+      <div className="flex gap-4">
+        <GaugeChart />
+        <TotalSalesByGasType />
+      </div>
     </div>
   );
 };
