@@ -23,12 +23,12 @@ const TotalSalesByGasType = () => {
           </h3>
         </div>
         <div className="relative">
-          <select className="appearance-none text-xs md:text-sm font-medium px-3 py-1 md:px-4 md:py-2 pr-8 rounded-md bg-white border border-gray-200 text-gray-700 hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-30 transition-colors cursor-pointer shadow-sm">
+          <select className="appearance-none text-xs md:text-sm font-medium px-3 py-1 md:px-4 md:py-2 pr-10 md:pr-12 rounded-md bg-white border border-gray-200 text-gray-700 hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-30 transition-colors cursor-pointer shadow-sm">
             <option value="March">March</option>
             <option value="April">April</option>
             <option value="May">May</option>
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
             <svg
               className="w-3 h-3 md:w-4 md:h-4 fill-current"
               xmlns="http://www.w3.org/2000/svg"
