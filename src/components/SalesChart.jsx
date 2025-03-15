@@ -7,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
+  CartesianGrid,
 } from "recharts";
 
 const data = [
@@ -108,8 +109,35 @@ const SalesChart = () => {
 
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={data}>
-              <XAxis dataKey="day" />
-              <YAxis tickFormatter={(value) => `${value / 1000}k`} />
+              <CartesianGrid strokeDasharray="5 5" vertical={false} />
+              <XAxis
+                style={{
+                  fill: "#615e83",
+                }}
+                dataKey="day"
+                tick={{ fill: "#615e83", dy: 10 }}
+                tickMargin={5}
+                tickLine={false}
+                axisLine={{ stroke: "#e5e5ef" }}
+              />
+              <YAxis
+                tickFormatter={(value) => {
+                  if (value === 0) {
+                    return "0";
+                  }
+                  if (value >= 1000000) {
+                    const millions = value / 1000000;
+                    return millions % 1 === 0
+                      ? `${Math.floor(millions)}M`
+                      : `${millions.toFixed(1)}M`;
+                  }
+                  return `${value / 1000}k`;
+                }}
+                axisLine={false}
+                tick={{ fill: "#615e83" }}
+                tickMargin={10}
+                tickLine={false}
+              />
               <Tooltip formatter={(value) => `${value.toLocaleString()}`} />
               {Object.keys(colors).map((key) =>
                 selectedCategory === "All" || selectedCategory === key ? (
@@ -117,7 +145,7 @@ const SalesChart = () => {
                     key={key}
                     dataKey={key}
                     fill={colors[key]}
-                    barSize={20}
+                    barSize={12}
                     radius={[5, 5, 0, 0]}
                   />
                 ) : null

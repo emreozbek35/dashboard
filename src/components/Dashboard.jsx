@@ -6,7 +6,7 @@ import GaugeChart from "./GaugeChart";
 import TotalSalesByGasType from "./PieChart";
 const Dashboard = () => {
   return (
-    <div className="flex flex-col gap-4 p-4">
+    <div className="max-w-[95%] mx-auto flex flex-col gap-4 p-4">
       <div className="flex flex-wrap gap-4 w-full">
         <StatCard
           title="Total Sales Today"
