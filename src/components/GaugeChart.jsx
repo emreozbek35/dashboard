@@ -38,6 +38,9 @@ const GaugeChart = ({ value = 65 }) => {
         </div>
       </div>
 
+      {/* Divider border below title */}
+      <div className="border-b border-gray-200 mb-4"></div>
+
       <div className="flex flex-col items-center">
         <div className="w-full relative" style={{ height: "500px" }}>
           <ResponsiveContainer

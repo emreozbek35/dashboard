@@ -15,9 +15,11 @@ const TotalSalesByGasType = () => {
       className="p-4 shadow-md rounded-lg flex-1 bg-white min-w-[280px]"
       style={{ height: "fit-content" }}
     >
-      <h2 className="text-[#9291a5] text-sm">Statistics</h2>
-      <div className="flex justify-between items-center">
-        <h3 className="text-xl font-bold">Total Sales by Gas Type</h3>
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <p className="text-[#9291a5] text-sm">Statistics</p>
+          <h3 className="text-xl font-bold">Total Sales by Gas Type</h3>
+        </div>
         <div className="relative">
           <select className="appearance-none text-sm font-medium px-4 py-2 pr-8 rounded-md bg-white border border-gray-200 text-gray-700 hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-30 transition-colors cursor-pointer shadow-sm">
             <option value="March">March</option>
@@ -35,6 +37,10 @@ const TotalSalesByGasType = () => {
           </div>
         </div>
       </div>
+
+      {/* Divider border below title */}
+      <div className="border-b border-gray-200 my-3"></div>
+
       <div className="flex flex-col sm:flex-row items-center mt-4">
         <div className="w-full sm:w-1/2">
           <ResponsiveContainer width="100%" height={200}>
