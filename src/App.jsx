@@ -1,8 +1,11 @@
+import React from "react";
+import Dashboard from "./components/Dashboard";
+
 function App() {
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <div className="min-h-screen bg-gray-100">
+      <Dashboard />
+    </div>
   );
 }
 
