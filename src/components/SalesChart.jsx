@@ -81,18 +81,62 @@ const SalesChart = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedPeriod, setSelectedPeriod] = useState("Weekly");
 
+  const CategorySelector = () => (
+    <div className="flex flex-col gap-4">
+      <button
+        className={`max-w-fit px-2 flex items-center gap-2 py-2 border-1 rounded-full ${
+          selectedCategory === "All"
+            ? "border-[#4a3aff] text-[#4a3aff] font-bold"
+            : "border-gray-400 text-gray-600"
+        }`}
+        onClick={() => setSelectedCategory("All")}
+      >
+        <span className="w-3 h-3 bg-[#4a3aff] rounded-full"></span> All
+        Categories
+      </button>
+      <div className="flex flex-col gap-3">
+        {Object.keys(colors).map((category) => (
+          <button
+            key={category}
+            className={`flex px-2 items-center gap-2 text-sm ${
+              selectedCategory === category
+                ? "text-[#4a3aff] font-bold"
+                : "text-gray-600"
+            }`}
+            onClick={() => setSelectedCategory(category)}
+          >
+            <span
+              className="w-3 h-3 rounded-full"
+              style={{ backgroundColor: colors[category] }}
+            ></span>
+            {category} -{" "}
+            {Math.floor(
+              (data.reduce((sum, d) => sum + d[category], 0) /
+                data.length /
+                1000000) *
+                100
+            )}
+            %
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md w-full">
-      <div className="flex gap-6">
-        {/* Left Side - Statistics, Title, Period Selector and Chart */}
-        <div className="w-3/4 border-r border-gray-200">
-          <div className="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
-            <div>
+    <div className="bg-white p-4 md:p-6 rounded-2xl shadow-md w-full">
+      {/* Main content container - flex column on mobile, row on larger screens */}
+      <div className="flex flex-col lg:flex-row lg:gap-6">
+        {/* Chart section - full width on mobile, 3/4 on larger screens */}
+        <div className="w-full lg:w-3/4 lg:border-r lg:border-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 pb-4 border-b border-gray-200">
+            <div className="mb-3 sm:mb-0">
               <p className="text-gray-400 text-sm">Statistics</p>
               <h2 className="text-xl font-bold">Total summary of sales</h2>
             </div>
 
-            <div className="bg-gray-100 p-1 rounded-xl flex">
+            {/* Period selector - hidden on mobile, visible on md screens and up */}
+            <div className="hidden md:flex bg-gray-100 p-1 rounded-xl">
               {["Daily", "Weekly", "Monthly"].map((period) => (
                 <button
                   key={period}
@@ -156,45 +200,16 @@ const SalesChart = () => {
           </ResponsiveContainer>
         </div>
 
-        {/* Right Side - Category Selector */}
-        <div className="w-1/4 flex flex-col gap-4 self-center pl-4">
-          <button
-            className={`max-w-fit px-2 flex items-center gap-2  py-2 border-1 rounded-full ${
-              selectedCategory === "All"
-                ? "border-[#4a3aff] text-[#4a3aff] font-bold"
-                : "border-gray-400 text-gray-600"
-            }`}
-            onClick={() => setSelectedCategory("All")}
-          >
-            <span className="w-3 h-3 bg-[#4a3aff] rounded-full"></span> All
-            Categories
-          </button>
-          <div className="flex flex-col gap-3">
-            {Object.keys(colors).map((category) => (
-              <button
-                key={category}
-                className={`flex px-2 items-center gap-2 text-sm ${
-                  selectedCategory === category
-                    ? "text-[#4a3aff] font-bold"
-                    : "text-gray-600"
-                }`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                <span
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: colors[category] }}
-                ></span>
-                {category} -{" "}
-                {Math.floor(
-                  (data.reduce((sum, d) => sum + d[category], 0) /
-                    data.length /
-                    1000000) *
-                    100
-                )}
-                %
-              </button>
-            ))}
-          </div>
+        {/* Category selector - hidden on mobile in this position */}
+        <div className="hidden lg:flex lg:w-1/4 lg:flex-col lg:gap-4 lg:self-center lg:pl-4">
+          <CategorySelector />
+        </div>
+      </div>
+
+      {/* Category selector below chart on mobile and small screens */}
+      <div className="mt-6 lg:hidden">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <CategorySelector />
         </div>
       </div>
     </div>
