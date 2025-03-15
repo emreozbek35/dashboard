@@ -62,8 +62,10 @@ const GaugeChart = ({ value = 65 }) => {
           </ResponsiveContainer>
         </div>
         <div className="text-4xl font-bold mt-2">{value}%</div>
-        <p className="text-gray-500 text-lg">Tank #1's fill rate is</p>
-        <p className="text-gray-400 text-sm">Updated Mar 24, 2025</p>
+        <p className="text-[#1e1b39] font-bold text-lg">
+          Tank #1's fill rate is
+        </p>
+        <p className="text-[#615e83] text-sm">Updated Mar 24, 2025</p>
       </div>
     </div>
   );
