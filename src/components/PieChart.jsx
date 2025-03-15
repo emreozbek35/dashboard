@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 
 const data = [
   { name: "Diesel", value: 39.11, color: "#3b82f6", change: "+2.98%" },
@@ -10,7 +10,7 @@ const data = [
 
 const TotalSalesByGasType = () => {
   return (
-    <div className="p-4 shadow-md rounded-lg flex-1 bg-white">
+    <div className="p-4 shadow-md rounded-lg flex-1 bg-white min-w-[280px]">
       <h2 className="text-gray-500 text-sm">Statistics</h2>
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-bold">Total Sales by Gas Type</h3>
@@ -18,30 +18,34 @@ const TotalSalesByGasType = () => {
           <option value="March">March</option>
         </select>
       </div>
-      <div className="flex items-center mt-4">
-        <PieChart width={300} height={300}>
-          <Pie
-            data={data}
-            dataKey="value"
-            cx="50%"
-            cy="50%"
-            outerRadius={90}
-            fill="#8884d8"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
-        <div className="ml-4 text-sm">
+      <div className="flex flex-col sm:flex-row items-center mt-4">
+        <div className="w-full sm:w-1/2">
+          <ResponsiveContainer width="100%" height={200}>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="value"
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                fill="#8884d8"
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="w-full sm:w-1/2 mt-4 sm:mt-0 sm:ml-4">
           {data.map((item, index) => (
-            <div key={index} className="flex items-center gap-2 mb-1">
+            <div key={index} className="flex items-center gap-2 mb-2">
               <span
-                className="w-2 h-2 rounded-full"
+                className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: item.color }}
               ></span>
-              <span>{item.name}</span>
+              <span className="flex-1">{item.name}</span>
               <span className="font-bold">{item.value}%</span>
               <span
                 className={
