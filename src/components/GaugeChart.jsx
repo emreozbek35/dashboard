@@ -39,30 +39,46 @@ const GaugeChart = ({ value = 65 }) => {
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="w-full" style={{ height: "180px" }}>
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="w-full relative" style={{ height: "500px" }}>
+          <ResponsiveContainer
+            style={{
+              userSelect: "none",
+              pointerEvents: "none",
+            }}
+            width="100%"
+            height="100%"
+          >
             <PieChart>
               <Pie
                 data={data}
                 cx="50%"
-                cy="100%"
+                cy="70%"
                 startAngle={180}
                 endAngle={0}
                 innerRadius="60%"
                 outerRadius="80%"
-                paddingAngle={5} // Smooth gap
-                cornerRadius={20} // Rounded arcs
+                paddingAngle={1} // Smooth gap
+                cornerRadius={100} // Rounded arcs
                 dataKey="value"
+                strokeWidth={10}
               >
                 {data.map((_, index) => (
-                  <Cell key={index} fill={COLORS[index]} />
+                  <Cell scale={100} key={index} fill={COLORS[index]} />
                 ))}
               </Pie>
             </PieChart>
           </ResponsiveContainer>
+
+          {/* Positioned value display inside the chart */}
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center"
+            style={{ top: "40%" }}
+          >
+            <div className="text-6xl font-bold">{value}%</div>
+          </div>
         </div>
-        <div className="text-4xl font-bold mt-2">{value}%</div>
-        <p className="text-[#1e1b39] font-bold text-lg">
+
+        <p className="text-[#1e1b39] font-bold text-lg mt-2">
           Tank #1's fill rate is
         </p>
         <p className="text-[#615e83] text-sm">Updated Mar 24, 2025</p>
