@@ -14,24 +14,24 @@ const GaugeChart = ({ value = 65 }) => {
   // const needleValue = (value / 100) * 180; // Convert percentage to degrees
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md w-full">
+    <div className="bg-white p-6 rounded-2xl shadow-md flex-1">
       <div className="flex justify-between items-center mb-4">
         <div>
-          <p className="text-gray-400 text-sm">Tank Status</p>
-          <h2 className="text-xl font-bold">Fuel Level Indicator</h2>
+          <p className="text-gray-400 text-sm">Tanks</p>
+          <h2 className="text-xl font-bold">Tank #1</h2>
         </div>
       </div>
 
       <div className="flex flex-col items-center">
-        <PieChart width={200} height={120}>
+        <PieChart width={400} height={180}>
           <Pie
             data={data}
-            cx={100}
-            cy={100}
+            cx={200}
+            cy={150}
             startAngle={180}
             endAngle={0}
-            innerRadius={60}
-            outerRadius={80}
+            innerRadius={110}
+            outerRadius={140}
             paddingAngle={5} // Smooth gap
             cornerRadius={20} // Rounded arcs
             dataKey="value"
@@ -41,8 +41,8 @@ const GaugeChart = ({ value = 65 }) => {
             ))}
           </Pie>
         </PieChart>
-        <div className="text-3xl font-bold">{value}%</div>
-        <p className="text-gray-500">Tank #1's fill rate is</p>
+        <div className="text-4xl font-bold mt-2">{value}%</div>
+        <p className="text-gray-500 text-lg">Tank #1's fill rate is</p>
         <p className="text-gray-400 text-sm">Updated Mar 24, 2025</p>
       </div>
     </div>

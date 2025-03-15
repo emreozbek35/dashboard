@@ -1,9 +1,16 @@
 import React from "react";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
 
-const StatCard = ({ title, value, percentage, data, color }) => {
+const StatCard = ({
+  title,
+  value,
+  percentage,
+  data,
+  color,
+  className = "",
+}) => {
   return (
-    <div className="bg-white p-4 rounded-2xl shadow-md w-72">
+    <div className={`bg-white p-4 rounded-2xl shadow-md ${className}`}>
       <p className="text-gray-400 text-sm">Statistics</p>
       <h2 className="text-lg font-bold">{title}</h2>
       <p className="text-3xl font-bold">{value}</p>

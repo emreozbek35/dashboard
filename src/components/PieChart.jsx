@@ -10,7 +10,7 @@ const data = [
 
 const TotalSalesByGasType = () => {
   return (
-    <div className="p-4 shadow-md rounded-lg w-[400px] bg-white">
+    <div className="p-4 shadow-md rounded-lg flex-1 bg-white">
       <h2 className="text-gray-500 text-sm">Statistics</h2>
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-bold">Total Sales by Gas Type</h3>
@@ -19,13 +19,13 @@ const TotalSalesByGasType = () => {
         </select>
       </div>
       <div className="flex items-center mt-4">
-        <PieChart width={200} height={200}>
+        <PieChart width={300} height={300}>
           <Pie
             data={data}
             dataKey="value"
             cx="50%"
             cy="50%"
-            outerRadius={60}
+            outerRadius={90}
             fill="#8884d8"
           >
             {data.map((entry, index) => (
