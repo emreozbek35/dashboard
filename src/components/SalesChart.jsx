@@ -70,10 +70,10 @@ const data = [
 ];
 
 const colors = {
-  Diesel: "#A855F7",
-  AdBlue: "#6366F1",
-  SuperE5: "#C4B5FD",
-  SuperE10: "#818CF8",
+  Diesel: "#962dff",
+  AdBlue: "#4a3aff",
+  SuperE5: "#e0c6fd",
+  SuperE10: "#93aafd",
   Cleaning: "#BFDBFE",
 };
 
