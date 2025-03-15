@@ -79,6 +79,7 @@ const colors = {
 
 const SalesChart = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedPeriod, setSelectedPeriod] = useState("Weekly");
 
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md w-full">
@@ -95,11 +96,12 @@ const SalesChart = () => {
               {["Daily", "Weekly", "Monthly"].map((period) => (
                 <button
                   key={period}
-                  className={`px-4 py-1 text-sm rounded-lg ${
-                    period === "Weekly"
+                  className={`px-4 py-1 text-sm rounded-lg cursor-pointer ${
+                    period === selectedPeriod
                       ? "bg-black text-white"
                       : "text-gray-600"
                   }`}
+                  onClick={() => setSelectedPeriod(period)}
                 >
                   {period}
                 </button>
