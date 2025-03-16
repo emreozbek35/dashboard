@@ -1,15 +1,50 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 
-const data = [
-  { name: "Diesel", value: 39.11, color: "#962dff", change: "+2.98%" },
-  { name: "Ad Blue", value: 28.02, color: "#4a3aff", change: "-3.25%" },
-  { name: "Super E5", value: 23.13, color: "#e0c6fd", change: "+0.14%" },
-  { name: "Super E10", value: 5.03, color: "#93aafd", change: "-1.11%" },
-  { name: "Cleaning", value: 4.71, color: "#BFDBFE", change: "+0.87%" },
-];
+const colors = {
+  Diesel: "#962dff",
+  AdBlue: "#4a3aff",
+  SuperE5: "#e0c6fd",
+  SuperE10: "#93aafd",
+  Cleaning: "#BFDBFE",
+};
 
-const TotalSalesByGasType = () => {
+const calculatePercentages = (data) => {
+  if (!data || data.length === 0) return [];
+
+  const latest = data[data.length - 1];
+  const previous = data[data.length - 2];
+
+  const categories = ["Diesel", "AdBlue", "SuperE5", "SuperE10", "Cleaning"];
+  const total = categories.reduce(
+    (sum, category) => sum + parseFloat(latest[category] || 0),
+    0
+  );
+
+  return categories.map((category) => {
+    const value = (parseFloat(latest[category] || 0) / total) * 100;
+    const prevValue = previous
+      ? (parseFloat(previous[category] || 0) /
+          categories.reduce(
+            (sum, cat) => sum + parseFloat(previous[cat] || 0),
+            0
+          )) *
+        100
+      : value;
+    const change = ((value - prevValue) / prevValue) * 100;
+
+    return {
+      name: category,
+      value: parseFloat(value.toFixed(2)),
+      color: colors[category],
+      change: `${change >= 0 ? "+" : ""}${change.toFixed(2)}%`,
+    };
+  });
+};
+
+const TotalSalesByGasType = ({ data }) => {
+  const chartData = calculatePercentages(data);
+
   return (
     <div
       className="p-3 lg:p-4 shadow-md rounded-lg flex-1 bg-white min-w-[280px]"
@@ -48,14 +83,14 @@ const TotalSalesByGasType = () => {
           <ResponsiveContainer width="100%" height={180}>
             <PieChart>
               <Pie
-                data={data}
+                data={chartData}
                 dataKey="value"
                 cx="50%"
                 cy="50%"
                 outerRadius={70}
                 fill="#8884d8"
               >
-                {data.map((entry, index) => (
+                {chartData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
@@ -64,7 +99,7 @@ const TotalSalesByGasType = () => {
           </ResponsiveContainer>
         </div>
         <div className="w-full lg:w-1/2 mt-2 lg:mt-0 lg:ml-4">
-          {data.map((item, index) => (
+          {chartData.map((item, index) => (
             <div
               key={index}
               className="grid grid-cols-12 gap-1 md:gap-2 mb-1 md:mb-2 items-center text-xs md:text-sm"

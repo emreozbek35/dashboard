@@ -26,7 +26,7 @@ const StatCard = ({
           </p>
         </div>
 
-        <div className="w-1/2 h-[50px]">
+        <div className="w-1/2 h-[80px]">
           <ResponsiveContainer width="100%" height={80}>
             <LineChart data={data}>
               <Line
